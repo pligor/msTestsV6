@@ -1,0 +1,25 @@
+query GetFilteredSortedPaginatedPosts {
+  maposts: posts( # maposts Alias
+    tags: ["graphql", null],
+    sortBy: "createdAt", # exactly the same as the default one
+    sortDirection: "DESC",
+    first: 4
+  ) {
+    edges {
+      cursor
+      node {
+        id
+        title
+        content
+        createdAt
+        tags {
+          name
+        }
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+  }
+}

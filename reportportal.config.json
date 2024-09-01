@@ -1,0 +1,15 @@
+{
+  "$schema": "https://raw.githubusercontent.com/reportportal/agent-net-vstest/develop/src/ReportPortal.VSTest.TestLogger/ReportPortal.config.schema",
+  "enabled": true,
+  "server": {
+    "url": "http://localhost:8080/api/v1",
+    "project": "superadmin_personal",
+    "apiKey": "superadmin-my-tests-mstest_wIKB5FatRmaLzzy2mxD0gIImjk5LevCgaDY8swqordTMe_Kwfl9Dv0kuI47I9qk_"
+  },
+  "launch": {
+    "name": "Georgioss MSTest Tests",
+    "description": "A description of your launch",
+    "debugMode": false,
+    "attributes": ["mstest"]
+  }
+}

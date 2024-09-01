@@ -1,0 +1,17 @@
+query GetUserProfileWithConditionals($userId: ID!,
+$includePosts: Boolean!,
+$skipEmail: Boolean!,
+$skipAge: Boolean = false) {
+  user(id: $userId) {
+    id
+    name
+    email @skip(if: $skipEmail)
+    age @skip(if: $skipAge)
+    posts @include(if: $includePosts) {
+      id
+      title
+      content
+      createdAt
+    }
+  }
+}

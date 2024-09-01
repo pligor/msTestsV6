@@ -1,0 +1,21 @@
+fragment UserDetails on User {
+  id
+  name
+  email
+}
+
+query GetUsersWithFragment($id1: ID!, $id2: ID!) {
+  user1: user(id: $id1) { # user1 Alias
+    ...UserDetails
+    posts {
+      title
+    }
+  }
+
+  user2: user(id: $id2) { # user2 Alias
+    ...UserDetails
+    posts {
+      content
+    }
+  }
+}
