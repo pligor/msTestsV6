@@ -460,7 +460,7 @@ public class TestGraphQL {
     Assert.AreEqual("Hello World", up_res.Data.updatePost.user.name.Value);
   }
 
-  //dotnet test --filter "wip=true"
+  //dotnet test --filter "TestCategory=integration"
   [TestMethod]
   [TestCategory("integration")]
   [TestCategory("high_prio")]
