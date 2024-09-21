@@ -1,7 +1,4 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.IO;
 using UglyToad.PdfPig;
 
 namespace MyTests.test_files;
@@ -40,6 +37,7 @@ public class PdfContentTests
         // Open the PDF document
         using PdfDocument pdfDocument = PdfDocument.Open(memoryStream);
         // Extract text from all pages
+        /*
         string extractedText = string.Empty;
         foreach (var page in pdfDocument.GetPages()) {
           var words = page.GetWords();
@@ -49,5 +47,9 @@ public class PdfContentTests
           // extractedText += words.Aggregate(string.Empty, (current, word) => current + word.Text + " ") + "\n";
         }
         return extractedText;
+        */
+        return string.Join("\n", pdfDocument.GetPages().Select(page =>
+            string.Join(" ", page.GetWords().Select(word => word.Text))
+        ));
     }
 }
