@@ -3,17 +3,18 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
+# Updated pipeline for macOS self-hosted agent
 trigger:
 - master
 
 pool:
-  vmImage: ubuntu-latest
+  name: my-self-hosted-agent-pool  # Updated to match your self-hosted pool
 
 steps:
-- script: echo Hello, world!
+- script: echo "Hello, world!"
   displayName: 'Run a one-line script'
 
 - script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
+    echo "Add other tasks to build, test, and deploy your project."
+    echo "See https://aka.ms/yaml"
   displayName: 'Run a multi-line script'
