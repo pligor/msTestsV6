@@ -7,14 +7,47 @@
 # trigger:
 # - master
 
-pool:
-  name: my-self-hosted-agent-pool  # Updated to match your self-hosted pool
+jobs:
+- job: Default
+  timeoutInMinutes: 360
+  pool:
+    name: my-self-hosted-agent-pool  # Updated to match your self-hosted pool
+    # This line specifies a requirement that the agent must meet to run 
+    # the job. In this case, vstest indicates that the agent must have the
+    # Visual Studio Test (VSTest) capability installed.
+    # Purpose: Demands ensure that the job only runs on agents that meet
+    # specific software or hardware requirements, in this case, those 
+    # capable of running VSTest, a tool used for running unit and 
+    # automated tests.
+    demands: vstest
 
-steps:
-- script: echo "Hello, world!"
-  displayName: 'Run a one-line script'
+  steps:
+  - script: echo "Hello, world!"
+    displayName: 'Run a one-line script'
 
-- script: |
-    echo "Add other tasks to build, test, and deploy your project."
-    echo "See https://aka.ms/yaml"
-  displayName: 'Run a multi-line script'
+  # This task sets up the specified version of .NET Core (6.x) on the agent,
+  # ensuring the correct runtime and SDK are available for subsequent steps 
+  # in the pipeline that require .NET Core 6.
+  - task: UseDotNet@2
+    displayName: 'Use .NET Core 6'
+    inputs:
+      version: 6.0.x
+
+  - task: DotNetCoreCLI@2
+    displayName: 'Restore nugets'
+    inputs:
+      command: 'restore'
+      # The pattern **/*.sln means it will restore for all solution files in the directory and subdirectories.
+      projects: '**/*.sln'
+      feedsToUse: 'config'
+      # including both the default link to find nugets and the link provided by
+      # Austrian Post allows for nuget files to be retrieved even if
+      # firewalls or other situations block from getting the nugets
+      nugetConfigPath: 'NuGet.config'
+      noCache: true
+      verbosityRestore: Quiet
+
+  - script: |
+      echo "All above steps were executed successfully"
+      echo "See https://aka.ms/yaml"
+      displayName: 'Run a multi-line script'
