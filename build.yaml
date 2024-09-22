@@ -19,7 +19,7 @@ jobs:
     # specific software or hardware requirements, in this case, those 
     # capable of running VSTest, a tool used for running unit and 
     # automated tests.
-    demands: vstest
+    demands: dotnet
 
   steps:
   - script: echo "Hello, world!"
