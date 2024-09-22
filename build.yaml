@@ -3,9 +3,9 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-# Updated pipeline for macOS self-hosted agent
-trigger:
-- master
+# we do not want the pipeline to be triggered when
+# trigger:
+# - master
 
 pool:
   name: my-self-hosted-agent-pool  # Updated to match your self-hosted pool
