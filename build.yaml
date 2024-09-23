@@ -34,6 +34,12 @@ jobs:
       version: 6.0.x
 
   - task: DotNetCoreCLI@2
+    displayName: 'Clean Solution'
+    inputs:
+      command: 'clean'
+      projects: '**/*.sln'
+
+  - task: DotNetCoreCLI@2
     displayName: 'Restore nugets'
     inputs:
       command: 'restore'
