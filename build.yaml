@@ -23,7 +23,8 @@ jobs:
     demands: dotnet
 
   steps:
-  - script: echo "Hello, world!"
+  - script: |
+      echo "This is currently the default working directory: $(System.DefaultWorkingDirectory)"
     displayName: 'Run a one-line script'
 
   # This task sets up the specified version of .NET Core (6.x) on the agent,
