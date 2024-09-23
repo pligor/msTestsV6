@@ -7,7 +7,7 @@ namespace MyTests.test_files;
 public class PdfContentTests
 {
     [TestMethod]
-    [TestCategory("wip")]
+    //  dotnet test --list-tests --filter "FullyQualifiedName=MyTests.test_files.PdfContentTests.VerifyPdfContentAsync"
     public async Task VerifyPdfContentAsync()
     {
         // URL of the PDF file
