@@ -25,7 +25,8 @@ jobs:
   steps:
   - script: |
       echo "This is currently the default working directory: $(System.DefaultWorkingDirectory)"
-    displayName: 'Run a one-line script'
+      echo "This is the currently chosen configuration: $(DOTNET_CONFIGURATION)"
+    displayName: 'Print the parameters of the current execution/run of the pipeline'
 
   # This task sets up the specified version of .NET Core (6.x) on the agent,
   # ensuring the correct runtime and SDK are available for subsequent steps 
@@ -63,9 +64,9 @@ jobs:
       # The explicit /p:OutDir setting overrides the default bin location
       # to direct outputs to a centralized location used by the pipeline, 
       # ensuring consistency and ease of access for further pipeline tasks.
-      # arguments: '/p:OutDir="$(System.DefaultWorkingDirectory)" /p:Configuration=abn'
+      arguments: '/p:OutDir="$(System.DefaultWorkingDirectory)"'
 
   - script: |
       echo "All above steps were executed successfully"
       echo "See https://aka.ms/yaml"
-    displayName: 'Run a multi-line script'
+    displayName: 'Running an only one-line script makes little sense, multi-line script it is'
