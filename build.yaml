@@ -56,6 +56,15 @@ jobs:
       noCache: true
       verbosityRestore: Quiet
 
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet build'
+    inputs:
+      projects: '**/*.csproj'
+      # The explicit /p:OutDir setting overrides the default bin location
+      # to direct outputs to a centralized location used by the pipeline, 
+      # ensuring consistency and ease of access for further pipeline tasks.
+      # arguments: '/p:OutDir="$(System.DefaultWorkingDirectory)" /p:Configuration=abn'
+
   - script: |
       echo "All above steps were executed successfully"
       echo "See https://aka.ms/yaml"
