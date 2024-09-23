@@ -26,6 +26,8 @@ jobs:
   - script: |
       echo "This is currently the default working directory: $(System.DefaultWorkingDirectory)"
       echo "This is the currently chosen configuration: $(DOTNET_CONFIGURATION)"
+      echo "Running tests with filter: $(TEST_FILTER)"
+      echo "Dry run: $(DRY_RUN)"
     displayName: 'Print the parameters of the current execution/run of the pipeline'
 
   # This task sets up the specified version of .NET Core (6.x) on the agent,
@@ -66,14 +68,24 @@ jobs:
       # ensuring consistency and ease of access for further pipeline tasks.
       arguments: '/p:OutDir="$(System.DefaultWorkingDirectory)"'
 
-  - task: DotNetCoreCLI@2
-    displayName: 'Run MSTests with Optional Filter'
-    inputs:
-      command: test
-      projects: 'MyTests.csproj'
-      arguments: |
-        --filter "$(TEST_FILTER)"
-        $(if[eq(variables['DRY_RUN'], 'true'), '--list-tests', ''])
+  # - task: DotNetCoreCLI@2
+  #   displayName: 'Run MSTests with Optional Filter'
+  #   inputs:
+  #     command: test
+  #     projects: 'MyTests.csproj'
+  #     arguments: |
+  #       --filter "$(TEST_FILTER)"
+  #       $(if[eq(variables['DRY_RUN'], 'true'), '--list-tests', ''])
+  - script: |
+     echo "Starting test run..."
+
+     # Determine the command options based on the DRY_RUN and TEST_FILTER variables
+     if [ "$(DRY_RUN)" = "true" ]; then
+        dotnet test MyTests.csproj --list-tests --filter "$(TEST_FILTER)"
+     else
+        dotnet test MyTests.csproj --filter "$(TEST_FILTER)"
+     fi
+    displayName: 'Run MSTests with Optional Filter and Dry Run'
 
   - script: |
       echo "All above steps were executed successfully"
