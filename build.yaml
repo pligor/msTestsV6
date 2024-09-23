@@ -66,6 +66,15 @@ jobs:
       # ensuring consistency and ease of access for further pipeline tasks.
       arguments: '/p:OutDir="$(System.DefaultWorkingDirectory)"'
 
+  - task: DotNetCoreCLI@2
+    displayName: 'Run MSTests with Optional Filter'
+    inputs:
+      command: test
+      projects: 'MyTests.csproj'
+      arguments: |
+        --filter "$(TEST_FILTER)"
+        $(if[eq(variables['DRY_RUN'], 'true'), '--list-tests', ''])
+
   - script: |
       echo "All above steps were executed successfully"
       echo "See https://aka.ms/yaml"
