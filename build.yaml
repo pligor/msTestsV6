@@ -6,6 +6,7 @@
 # we do not want the pipeline to be triggered when
 # trigger:
 # - master
+trigger: none
 
 jobs:
 - job: Default
@@ -36,7 +37,8 @@ jobs:
   - task: DotNetCoreCLI@2
     displayName: 'Clean Solution'
     inputs:
-      command: 'clean'
+      command: 'custom'
+      custom: 'clean'
       projects: '**/*.sln'
 
   - task: DotNetCoreCLI@2
