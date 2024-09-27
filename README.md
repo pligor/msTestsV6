@@ -27,6 +27,9 @@ Filter by partial name of the method:
 `dotnet test --filter FullyQualifiedName~TestGraphQL.test04`
 here all methods starting with "test04" will be included in the test run
 
+Filter by TestCategory:
+`dotnet test --filter "TestCategory=json_req"`
+
 Basic HTML report
 `dotnet test --filter FullyQualifiedName~TestGraphQL.test12 --logger html`
 

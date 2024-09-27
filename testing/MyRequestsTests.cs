@@ -49,6 +49,7 @@ public class MyRequestsTests
     }
 
     [TestMethod]
+    [TestCategory("json_req")]
     public async Task test_json_get_request() {
       var requestUri = "https://jsonplaceholder.typicode.com/todos/1"; // Sample JSON endpoint
 
