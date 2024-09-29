@@ -21,7 +21,7 @@ Filter by Class name:
 `dotnet test --filter FullyQualifiedName~UnitTest1`
 
 Filter by method:
-`dotnet test --filter FullyQualifiedName~TestGraphQL.test04_upd_assert_and_del`
+`dotnet test --filter FullyQualifiedName~MyTests.MyRequestsTests.test_json_get_request_with_model`
 
 Filter by partial name of the method:
 `dotnet test --filter FullyQualifiedName~TestGraphQL.test04`
