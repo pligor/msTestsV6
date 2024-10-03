@@ -67,6 +67,39 @@ Execute tests based on Test categories:
 Use logical operators: `& (AND), | (OR), and ! (NOT)`
 
 
+# HOW TO GENERATE GRAPHQL CLIENTS FROM SCHEMA ########################################################
+
+## Install StrawberryShake globally
+`dotnet tool install StrawberryShake.Tools --global`
+or
+`dotnet tool update StrawberryShake.Tools --global`
+
+## Setup project to support Depedency injection as it is mandatory by StrawberryShake
+`dotnet add package Microsoft.Extensions.DependencyInjection`
+`dotnet add package Microsoft.Extensions.Http`
+`dotnet add package StrawberryShake`
+`dotnet add package StrawberryShake.Transport.Http`
+
+# Ensure that StrawberryShake does NOT re-generate the clients upon every build (Optional)
+Add this to the csproj file:
+<PropertyGroup>
+  <StrawberryShake_GenerateDuringBuild>false</StrawberryShake_GenerateDuringBuild>
+</PropertyGroup>
+
+## how to initialize 
+`dotnet graphql init https://spacex-production.up.railway.app/graphql`
+where the link is the graphql endpoint directly.
+
+## next times to update the schema
+`dotnet graphql update`
+
+## Generate client
+`dotnet graphql generate -n MyGraphQLClient.SpaceX -o Generated`
+-n is the namespace that you want the client generated in
+-o  is the output folder
+################################################################################################
+
+
 # MINIMAL SETUP For Research Portal ########################################################
 
 git clone <https://github.com/reportportal/reportportal.git>
