@@ -10,6 +10,10 @@ using Microsoft.CSharp.RuntimeBinder;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.Extensions.DependencyInjection;
+using GraphQLClients.spaceXplayground;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using FluentAssertions;
 
 
 // using System.Linq;
@@ -47,6 +51,30 @@ public class TestGraphQL {
   public Task DisposeAsync() {
     // throw new NotImplementedException();
     return Task.CompletedTask;
+  }
+
+  [TestMethod]
+  [TestCategory("GraphQL")]
+  [TestCategory("wip")]
+  public async Task TestStrawberryShakeGraphQLGenerator() {
+    var serviceCollection = new ServiceCollection();
+
+    // Register IHttpClientFactory and configure the base address for the GraphQL API
+    serviceCollection.AddHttpClient("spaceXplayground", client =>
+    {
+        client.BaseAddress = new Uri("https://spacex-production.up.railway.app/graphql"); // Set the correct GraphQL API endpoint
+    });
+
+    // Add the generated GraphQL client
+    serviceCollection.AddspaceXplayground();
+    
+    var serviceProvider = serviceCollection.BuildServiceProvider();
+
+    var client = serviceProvider.GetRequiredService<IspaceXplayground>();
+    var result = await client.ExampleQuery.ExecuteAsync();
+
+    result.Data.Company.Should().NotBeNull();
+    result.Data.Company.Ceo.Should().Be("Elon Musk");
   }
 
   [TestMethod]

@@ -1,0 +1,9 @@
+query ExampleQuery {
+  company {
+    ceo
+    coo
+  }
+  roadster {
+    apoapsis_au
+  }
+}

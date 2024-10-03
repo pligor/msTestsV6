@@ -1,3 +1,6 @@
+# Do a smoke check of the framework with this command
+`dotnet test --filter FullyQualifiedName~MyTests.MyRequestsTests.test_json_get_request_with_model`
+
 # Specify dotnet version
 
 List available SDKs:
