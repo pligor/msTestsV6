@@ -80,11 +80,9 @@ or
 `dotnet add package StrawberryShake`
 `dotnet add package StrawberryShake.Transport.Http`
 
-# Ensure that StrawberryShake does NOT re-generate the clients upon every build (Optional)
-Add this to the csproj file:
-<PropertyGroup>
-  <StrawberryShake_GenerateDuringBuild>false</StrawberryShake_GenerateDuringBuild>
-</PropertyGroup>
+# Ensure that StrawberryShake does NOT re-generate the clients upon every build
+Remove this package: StrawberryShake.CodeGeneration.CSharp.Analyzers
+`dotnet remove package StrawberryShake.CodeGeneration.CSharp.Analyzers`
 
 ## how to initialize 
 `dotnet graphql init https://spacex-production.up.railway.app/graphql`
@@ -168,3 +166,8 @@ Finally you execute
 `dotnet test ...`
 and you see the launches here: <http://localhost:8080/ui/?#superadmin_personal/launches/all>
 ################################################################################################
+
+# How to use NSwag to generate C# clients from OpenAPI specs ########################################################
+
+Install the package:
+`dotnet add package NSwag.MSBuild`
