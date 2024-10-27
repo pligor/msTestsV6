@@ -4,6 +4,8 @@
 // </auto-generated>
 //----------------------
 
+#nullable enable
+
 #pragma warning disable 108 // Disable "CS0108 '{derivedDto}.ToJson()' hides inherited member '{dtoBase}.ToJson()'. Use the new keyword if hiding was intended."
 #pragma warning disable 114 // Disable "CS0114 '{derivedDto}.RaisePropertyChanged(String)' hides inherited member 'dtoBase.RaisePropertyChanged(String)'. To make the current member override that implementation, add the override keyword. Otherwise add the new keyword."
 #pragma warning disable 472 // Disable "CS0472 The result of the expression is always 'false' since a value of type 'Int32' is never equal to 'null' of type 'Int32?'
@@ -18,415 +20,20 @@
 #pragma warning disable 8625 // Disable "CS8625 Cannot convert null literal to non-nullable reference type"
 #pragma warning disable 8765 // Disable "CS8765 Nullability of type of parameter doesn't match overridden member (possibly because of nullability attributes)."
 
-namespace MyTests.test_nswag.generated
+namespace MyTests.TestNSwag
 {
     using System = global::System;
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial interface IPetstoreClient
-    {
-        /// <summary>
-        /// uploads an image
-        /// </summary>
-        /// <param name="petId">ID of pet to update</param>
-        /// <param name="additionalMetadata">Additional data to pass to server</param>
-        /// <param name="file">file to upload</param>
-        /// <returns>successful operation</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ApiResponse> UploadFileAsync(long petId, string additionalMetadata, FileParameter file);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// uploads an image
-        /// </summary>
-        /// <param name="petId">ID of pet to update</param>
-        /// <param name="additionalMetadata">Additional data to pass to server</param>
-        /// <param name="file">file to upload</param>
-        /// <returns>successful operation</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ApiResponse> UploadFileAsync(long petId, string additionalMetadata, FileParameter file, System.Threading.CancellationToken cancellationToken);
-
-        /// <summary>
-        /// Add a new pet to the store
-        /// </summary>
-        /// <param name="body">Pet object that needs to be added to the store</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task AddPetAsync(Pet body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Add a new pet to the store
-        /// </summary>
-        /// <param name="body">Pet object that needs to be added to the store</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task AddPetAsync(Pet body, System.Threading.CancellationToken cancellationToken);
-
-        /// <summary>
-        /// Update an existing pet
-        /// </summary>
-        /// <param name="body">Pet object that needs to be added to the store</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task UpdatePetAsync(Pet body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Update an existing pet
-        /// </summary>
-        /// <param name="body">Pet object that needs to be added to the store</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task UpdatePetAsync(Pet body, System.Threading.CancellationToken cancellationToken);
-
-        /// <summary>
-        /// Finds Pets by status
-        /// </summary>
-        /// <remarks>
-        /// Multiple status values can be provided with comma separated strings
-        /// </remarks>
-        /// <param name="status">Status values that need to be considered for filter</param>
-        /// <returns>successful operation</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Pet>> FindPetsByStatusAsync(System.Collections.Generic.IEnumerable<Anonymous> status);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Finds Pets by status
-        /// </summary>
-        /// <remarks>
-        /// Multiple status values can be provided with comma separated strings
-        /// </remarks>
-        /// <param name="status">Status values that need to be considered for filter</param>
-        /// <returns>successful operation</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Pet>> FindPetsByStatusAsync(System.Collections.Generic.IEnumerable<Anonymous> status, System.Threading.CancellationToken cancellationToken);
-
-        /// <summary>
-        /// Finds Pets by tags
-        /// </summary>
-        /// <remarks>
-        /// Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.
-        /// </remarks>
-        /// <param name="tags">Tags to filter by</param>
-        /// <returns>successful operation</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        [System.Obsolete]
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Pet>> FindPetsByTagsAsync(System.Collections.Generic.IEnumerable<string> tags);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Finds Pets by tags
-        /// </summary>
-        /// <remarks>
-        /// Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.
-        /// </remarks>
-        /// <param name="tags">Tags to filter by</param>
-        /// <returns>successful operation</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        [System.Obsolete]
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Pet>> FindPetsByTagsAsync(System.Collections.Generic.IEnumerable<string> tags, System.Threading.CancellationToken cancellationToken);
-
-        /// <summary>
-        /// Find pet by ID
-        /// </summary>
-        /// <remarks>
-        /// Returns a single pet
-        /// </remarks>
-        /// <param name="petId">ID of pet to return</param>
-        /// <returns>successful operation</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Pet> GetPetByIdAsync(long petId);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Find pet by ID
-        /// </summary>
-        /// <remarks>
-        /// Returns a single pet
-        /// </remarks>
-        /// <param name="petId">ID of pet to return</param>
-        /// <returns>successful operation</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Pet> GetPetByIdAsync(long petId, System.Threading.CancellationToken cancellationToken);
-
-        /// <summary>
-        /// Updates a pet in the store with form data
-        /// </summary>
-        /// <param name="petId">ID of pet that needs to be updated</param>
-        /// <param name="name">Updated name of the pet</param>
-        /// <param name="status">Updated status of the pet</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task UpdatePetWithFormAsync(long petId, string name, string status);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Updates a pet in the store with form data
-        /// </summary>
-        /// <param name="petId">ID of pet that needs to be updated</param>
-        /// <param name="name">Updated name of the pet</param>
-        /// <param name="status">Updated status of the pet</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task UpdatePetWithFormAsync(long petId, string name, string status, System.Threading.CancellationToken cancellationToken);
-
-        /// <summary>
-        /// Deletes a pet
-        /// </summary>
-        /// <param name="petId">Pet id to delete</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task DeletePetAsync(string api_key, long petId);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Deletes a pet
-        /// </summary>
-        /// <param name="petId">Pet id to delete</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task DeletePetAsync(string api_key, long petId, System.Threading.CancellationToken cancellationToken);
-
-        /// <summary>
-        /// Returns pet inventories by status
-        /// </summary>
-        /// <remarks>
-        /// Returns a map of status codes to quantities
-        /// </remarks>
-        /// <returns>successful operation</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.IDictionary<string, int>> GetInventoryAsync();
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Returns pet inventories by status
-        /// </summary>
-        /// <remarks>
-        /// Returns a map of status codes to quantities
-        /// </remarks>
-        /// <returns>successful operation</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.IDictionary<string, int>> GetInventoryAsync(System.Threading.CancellationToken cancellationToken);
-
-        /// <summary>
-        /// Place an order for a pet
-        /// </summary>
-        /// <param name="body">order placed for purchasing the pet</param>
-        /// <returns>successful operation</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Order> PlaceOrderAsync(Order body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Place an order for a pet
-        /// </summary>
-        /// <param name="body">order placed for purchasing the pet</param>
-        /// <returns>successful operation</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Order> PlaceOrderAsync(Order body, System.Threading.CancellationToken cancellationToken);
-
-        /// <summary>
-        /// Find purchase order by ID
-        /// </summary>
-        /// <remarks>
-        /// For valid response try integer IDs with value &gt;= 1 and &lt;= 10. Other values will generated exceptions
-        /// </remarks>
-        /// <param name="orderId">ID of pet that needs to be fetched</param>
-        /// <returns>successful operation</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Order> GetOrderByIdAsync(long orderId);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Find purchase order by ID
-        /// </summary>
-        /// <remarks>
-        /// For valid response try integer IDs with value &gt;= 1 and &lt;= 10. Other values will generated exceptions
-        /// </remarks>
-        /// <param name="orderId">ID of pet that needs to be fetched</param>
-        /// <returns>successful operation</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Order> GetOrderByIdAsync(long orderId, System.Threading.CancellationToken cancellationToken);
-
-        /// <summary>
-        /// Delete purchase order by ID
-        /// </summary>
-        /// <remarks>
-        /// For valid response try integer IDs with positive integer value. Negative or non-integer values will generate API errors
-        /// </remarks>
-        /// <param name="orderId">ID of the order that needs to be deleted</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task DeleteOrderAsync(long orderId);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Delete purchase order by ID
-        /// </summary>
-        /// <remarks>
-        /// For valid response try integer IDs with positive integer value. Negative or non-integer values will generate API errors
-        /// </remarks>
-        /// <param name="orderId">ID of the order that needs to be deleted</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task DeleteOrderAsync(long orderId, System.Threading.CancellationToken cancellationToken);
-
-        /// <summary>
-        /// Creates list of users with given input array
-        /// </summary>
-        /// <param name="body">List of user object</param>
-        /// <returns>successful operation</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task CreateUsersWithListInputAsync(System.Collections.Generic.IEnumerable<User> body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Creates list of users with given input array
-        /// </summary>
-        /// <param name="body">List of user object</param>
-        /// <returns>successful operation</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task CreateUsersWithListInputAsync(System.Collections.Generic.IEnumerable<User> body, System.Threading.CancellationToken cancellationToken);
-
-        /// <summary>
-        /// Get user by user name
-        /// </summary>
-        /// <param name="username">The name that needs to be fetched. Use user1 for testing.</param>
-        /// <returns>successful operation</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<User> GetUserByNameAsync(string username);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Get user by user name
-        /// </summary>
-        /// <param name="username">The name that needs to be fetched. Use user1 for testing.</param>
-        /// <returns>successful operation</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<User> GetUserByNameAsync(string username, System.Threading.CancellationToken cancellationToken);
-
-        /// <summary>
-        /// Updated user
-        /// </summary>
-        /// <remarks>
-        /// This can only be done by the logged in user.
-        /// </remarks>
-        /// <param name="username">name that need to be updated</param>
-        /// <param name="body">Updated user object</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task UpdateUserAsync(string username, User body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Updated user
-        /// </summary>
-        /// <remarks>
-        /// This can only be done by the logged in user.
-        /// </remarks>
-        /// <param name="username">name that need to be updated</param>
-        /// <param name="body">Updated user object</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task UpdateUserAsync(string username, User body, System.Threading.CancellationToken cancellationToken);
-
-        /// <summary>
-        /// Delete user
-        /// </summary>
-        /// <remarks>
-        /// This can only be done by the logged in user.
-        /// </remarks>
-        /// <param name="username">The name that needs to be deleted</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task DeleteUserAsync(string username);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Delete user
-        /// </summary>
-        /// <remarks>
-        /// This can only be done by the logged in user.
-        /// </remarks>
-        /// <param name="username">The name that needs to be deleted</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task DeleteUserAsync(string username, System.Threading.CancellationToken cancellationToken);
-
-        /// <summary>
-        /// Logs user into the system
-        /// </summary>
-        /// <param name="username">The user name for login</param>
-        /// <param name="password">The password for login in clear text</param>
-        /// <returns>successful operation</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<string> LoginUserAsync(string username, string password);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Logs user into the system
-        /// </summary>
-        /// <param name="username">The user name for login</param>
-        /// <param name="password">The password for login in clear text</param>
-        /// <returns>successful operation</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<string> LoginUserAsync(string username, string password, System.Threading.CancellationToken cancellationToken);
-
-        /// <summary>
-        /// Logs out current logged in user session
-        /// </summary>
-        /// <returns>successful operation</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task LogoutUserAsync();
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Logs out current logged in user session
-        /// </summary>
-        /// <returns>successful operation</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task LogoutUserAsync(System.Threading.CancellationToken cancellationToken);
-
-        /// <summary>
-        /// Creates list of users with given input array
-        /// </summary>
-        /// <param name="body">List of user object</param>
-        /// <returns>successful operation</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task CreateUsersWithArrayInputAsync(System.Collections.Generic.IEnumerable<User> body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Creates list of users with given input array
-        /// </summary>
-        /// <param name="body">List of user object</param>
-        /// <returns>successful operation</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task CreateUsersWithArrayInputAsync(System.Collections.Generic.IEnumerable<User> body, System.Threading.CancellationToken cancellationToken);
-
-        /// <summary>
-        /// Create user
-        /// </summary>
-        /// <remarks>
-        /// This can only be done by the logged in user.
-        /// </remarks>
-        /// <param name="body">Created user object</param>
-        /// <returns>successful operation</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task CreateUserAsync(User body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Create user
-        /// </summary>
-        /// <remarks>
-        /// This can only be done by the logged in user.
-        /// </remarks>
-        /// <param name="body">Created user object</param>
-        /// <returns>successful operation</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task CreateUserAsync(User body, System.Threading.CancellationToken cancellationToken);
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class PetstoreClient : IPetstoreClient
+    public partial class PetstoreClient 
     {
         #pragma warning disable 8618
         private string _baseUrl;
         #pragma warning restore 8618
 
         private System.Net.Http.HttpClient _httpClient;
-        private static System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(CreateSerializerSettings, true);
-        private Newtonsoft.Json.JsonSerializerSettings _instanceSettings;
+        private static System.Lazy<System.Text.Json.JsonSerializerOptions> _settings = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerSettings, true);
+        private System.Text.Json.JsonSerializerOptions _instanceSettings;
 
     #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         public PetstoreClient(System.Net.Http.HttpClient httpClient)
@@ -437,9 +44,9 @@ namespace MyTests.test_nswag.generated
             Initialize();
         }
 
-        private static Newtonsoft.Json.JsonSerializerSettings CreateSerializerSettings()
+        private static System.Text.Json.JsonSerializerOptions CreateSerializerSettings()
         {
-            var settings = new Newtonsoft.Json.JsonSerializerSettings();
+            var settings = new System.Text.Json.JsonSerializerOptions();
             UpdateJsonSerializerSettings(settings);
             return settings;
         }
@@ -455,9 +62,9 @@ namespace MyTests.test_nswag.generated
             }
         }
 
-        protected Newtonsoft.Json.JsonSerializerSettings JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
+        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
 
-        static partial void UpdateJsonSerializerSettings(Newtonsoft.Json.JsonSerializerSettings settings);
+        static partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
 
         partial void Initialize();
 
@@ -473,9 +80,9 @@ namespace MyTests.test_nswag.generated
         /// <param name="file">file to upload</param>
         /// <returns>successful operation</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<ApiResponse> UploadFileAsync(long petId, string additionalMetadata, FileParameter file)
+        public virtual ApiResponse UploadFile(long petId, string? additionalMetadata = null, FileParameter file = null)
         {
-            return UploadFileAsync(petId, additionalMetadata, file, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await UploadFileAsync(petId, additionalMetadata, file, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -487,7 +94,7 @@ namespace MyTests.test_nswag.generated
         /// <param name="file">file to upload</param>
         /// <returns>successful operation</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ApiResponse> UploadFileAsync(long petId, string additionalMetadata, FileParameter file, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<ApiResponse> UploadFileAsync(long petId, string? additionalMetadata = null, FileParameter file = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (petId == null)
                 throw new System.ArgumentNullException("petId");
@@ -583,9 +190,9 @@ namespace MyTests.test_nswag.generated
         /// </summary>
         /// <param name="body">Pet object that needs to be added to the store</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task AddPetAsync(Pet body)
+        public virtual void AddPet(Pet body)
         {
-            return AddPetAsync(body, System.Threading.CancellationToken.None);
+            System.Threading.Tasks.Task.Run(async () => await AddPetAsync(body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -594,7 +201,7 @@ namespace MyTests.test_nswag.generated
         /// </summary>
         /// <param name="body">Pet object that needs to be added to the store</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task AddPetAsync(Pet body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task AddPetAsync(Pet body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -605,8 +212,8 @@ namespace MyTests.test_nswag.generated
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, JsonSerializerSettings);
-                    var content_ = new System.Net.Http.StringContent(json_);
+                    var json_ = System.Text.Json.JsonSerializer.SerializeToUtf8Bytes(body, JsonSerializerSettings);
+                    var content_ = new System.Net.Http.ByteArrayContent(json_);
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
@@ -676,9 +283,9 @@ namespace MyTests.test_nswag.generated
         /// </summary>
         /// <param name="body">Pet object that needs to be added to the store</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task UpdatePetAsync(Pet body)
+        public virtual void UpdatePet(Pet body)
         {
-            return UpdatePetAsync(body, System.Threading.CancellationToken.None);
+            System.Threading.Tasks.Task.Run(async () => await UpdatePetAsync(body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -687,7 +294,7 @@ namespace MyTests.test_nswag.generated
         /// </summary>
         /// <param name="body">Pet object that needs to be added to the store</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task UpdatePetAsync(Pet body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task UpdatePetAsync(Pet body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -698,8 +305,8 @@ namespace MyTests.test_nswag.generated
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, JsonSerializerSettings);
-                    var content_ = new System.Net.Http.StringContent(json_);
+                    var json_ = System.Text.Json.JsonSerializer.SerializeToUtf8Bytes(body, JsonSerializerSettings);
+                    var content_ = new System.Net.Http.ByteArrayContent(json_);
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("PUT");
@@ -785,9 +392,9 @@ namespace MyTests.test_nswag.generated
         /// <param name="status">Status values that need to be considered for filter</param>
         /// <returns>successful operation</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Pet>> FindPetsByStatusAsync(System.Collections.Generic.IEnumerable<Anonymous> status)
+        public virtual System.Collections.Generic.ICollection<Pet> FindPetsByStatus(System.Collections.Generic.IEnumerable<Anonymous> status)
         {
-            return FindPetsByStatusAsync(status, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await FindPetsByStatusAsync(status, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -800,7 +407,7 @@ namespace MyTests.test_nswag.generated
         /// <param name="status">Status values that need to be considered for filter</param>
         /// <returns>successful operation</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Pet>> FindPetsByStatusAsync(System.Collections.Generic.IEnumerable<Anonymous> status, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Pet>> FindPetsByStatusAsync(System.Collections.Generic.IEnumerable<Anonymous> status, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (status == null)
                 throw new System.ArgumentNullException("status");
@@ -890,9 +497,9 @@ namespace MyTests.test_nswag.generated
         /// <returns>successful operation</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         [System.Obsolete]
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Pet>> FindPetsByTagsAsync(System.Collections.Generic.IEnumerable<string> tags)
+        public virtual System.Collections.Generic.ICollection<Pet> FindPetsByTags(System.Collections.Generic.IEnumerable<string> tags)
         {
-            return FindPetsByTagsAsync(tags, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await FindPetsByTagsAsync(tags, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -906,7 +513,7 @@ namespace MyTests.test_nswag.generated
         /// <returns>successful operation</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         [System.Obsolete]
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Pet>> FindPetsByTagsAsync(System.Collections.Generic.IEnumerable<string> tags, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Pet>> FindPetsByTagsAsync(System.Collections.Generic.IEnumerable<string> tags, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (tags == null)
                 throw new System.ArgumentNullException("tags");
@@ -995,9 +602,9 @@ namespace MyTests.test_nswag.generated
         /// <param name="petId">ID of pet to return</param>
         /// <returns>successful operation</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<Pet> GetPetByIdAsync(long petId)
+        public virtual Pet GetPetById(long petId)
         {
-            return GetPetByIdAsync(petId, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetPetByIdAsync(petId, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -1010,7 +617,7 @@ namespace MyTests.test_nswag.generated
         /// <param name="petId">ID of pet to return</param>
         /// <returns>successful operation</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<Pet> GetPetByIdAsync(long petId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<Pet> GetPetByIdAsync(long petId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (petId == null)
                 throw new System.ArgumentNullException("petId");
@@ -1101,9 +708,9 @@ namespace MyTests.test_nswag.generated
         /// <param name="name">Updated name of the pet</param>
         /// <param name="status">Updated status of the pet</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task UpdatePetWithFormAsync(long petId, string name, string status)
+        public virtual void UpdatePetWithForm(long petId, string? name = null, string? status = null)
         {
-            return UpdatePetWithFormAsync(petId, name, status, System.Threading.CancellationToken.None);
+            System.Threading.Tasks.Task.Run(async () => await UpdatePetWithFormAsync(petId, name, status, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -1114,7 +721,7 @@ namespace MyTests.test_nswag.generated
         /// <param name="name">Updated name of the pet</param>
         /// <param name="status">Updated status of the pet</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task UpdatePetWithFormAsync(long petId, string name, string status, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task UpdatePetWithFormAsync(long petId, string? name = null, string? status = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (petId == null)
                 throw new System.ArgumentNullException("petId");
@@ -1199,9 +806,9 @@ namespace MyTests.test_nswag.generated
         /// </summary>
         /// <param name="petId">Pet id to delete</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task DeletePetAsync(string api_key, long petId)
+        public virtual void DeletePet(long petId, string? api_key = null)
         {
-            return DeletePetAsync(api_key, petId, System.Threading.CancellationToken.None);
+            System.Threading.Tasks.Task.Run(async () => await DeletePetAsync(petId, api_key, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -1210,7 +817,7 @@ namespace MyTests.test_nswag.generated
         /// </summary>
         /// <param name="petId">Pet id to delete</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task DeletePetAsync(string api_key, long petId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task DeletePetAsync(long petId, string? api_key = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (petId == null)
                 throw new System.ArgumentNullException("petId");
@@ -1301,9 +908,9 @@ namespace MyTests.test_nswag.generated
         /// </remarks>
         /// <returns>successful operation</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.IDictionary<string, int>> GetInventoryAsync()
+        public virtual System.Collections.Generic.IDictionary<string, int> GetInventory()
         {
-            return GetInventoryAsync(System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetInventoryAsync(System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -1315,7 +922,7 @@ namespace MyTests.test_nswag.generated
         /// </remarks>
         /// <returns>successful operation</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.IDictionary<string, int>> GetInventoryAsync(System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.IDictionary<string, int>> GetInventoryAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -1389,9 +996,9 @@ namespace MyTests.test_nswag.generated
         /// <param name="body">order placed for purchasing the pet</param>
         /// <returns>successful operation</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<Order> PlaceOrderAsync(Order body)
+        public virtual Order PlaceOrder(Order body)
         {
-            return PlaceOrderAsync(body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await PlaceOrderAsync(body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -1401,7 +1008,7 @@ namespace MyTests.test_nswag.generated
         /// <param name="body">order placed for purchasing the pet</param>
         /// <returns>successful operation</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<Order> PlaceOrderAsync(Order body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<Order> PlaceOrderAsync(Order body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -1412,8 +1019,8 @@ namespace MyTests.test_nswag.generated
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, JsonSerializerSettings);
-                    var content_ = new System.Net.Http.StringContent(json_);
+                    var json_ = System.Text.Json.JsonSerializer.SerializeToUtf8Bytes(body, JsonSerializerSettings);
+                    var content_ = new System.Net.Http.ByteArrayContent(json_);
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
@@ -1491,9 +1098,9 @@ namespace MyTests.test_nswag.generated
         /// <param name="orderId">ID of pet that needs to be fetched</param>
         /// <returns>successful operation</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<Order> GetOrderByIdAsync(long orderId)
+        public virtual Order GetOrderById(long orderId)
         {
-            return GetOrderByIdAsync(orderId, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetOrderByIdAsync(orderId, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -1506,7 +1113,7 @@ namespace MyTests.test_nswag.generated
         /// <param name="orderId">ID of pet that needs to be fetched</param>
         /// <returns>successful operation</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<Order> GetOrderByIdAsync(long orderId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<Order> GetOrderByIdAsync(long orderId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (orderId == null)
                 throw new System.ArgumentNullException("orderId");
@@ -1598,9 +1205,9 @@ namespace MyTests.test_nswag.generated
         /// </remarks>
         /// <param name="orderId">ID of the order that needs to be deleted</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task DeleteOrderAsync(long orderId)
+        public virtual void DeleteOrder(long orderId)
         {
-            return DeleteOrderAsync(orderId, System.Threading.CancellationToken.None);
+            System.Threading.Tasks.Task.Run(async () => await DeleteOrderAsync(orderId, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -1612,7 +1219,7 @@ namespace MyTests.test_nswag.generated
         /// </remarks>
         /// <param name="orderId">ID of the order that needs to be deleted</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task DeleteOrderAsync(long orderId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task DeleteOrderAsync(long orderId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (orderId == null)
                 throw new System.ArgumentNullException("orderId");
@@ -1698,9 +1305,9 @@ namespace MyTests.test_nswag.generated
         /// <param name="body">List of user object</param>
         /// <returns>successful operation</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task CreateUsersWithListInputAsync(System.Collections.Generic.IEnumerable<User> body)
+        public virtual void CreateUsersWithListInput(System.Collections.Generic.IEnumerable<User> body)
         {
-            return CreateUsersWithListInputAsync(body, System.Threading.CancellationToken.None);
+            System.Threading.Tasks.Task.Run(async () => await CreateUsersWithListInputAsync(body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -1710,7 +1317,7 @@ namespace MyTests.test_nswag.generated
         /// <param name="body">List of user object</param>
         /// <returns>successful operation</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task CreateUsersWithListInputAsync(System.Collections.Generic.IEnumerable<User> body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task CreateUsersWithListInputAsync(System.Collections.Generic.IEnumerable<User> body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -1721,8 +1328,8 @@ namespace MyTests.test_nswag.generated
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, JsonSerializerSettings);
-                    var content_ = new System.Net.Http.StringContent(json_);
+                    var json_ = System.Text.Json.JsonSerializer.SerializeToUtf8Bytes(body, JsonSerializerSettings);
+                    var content_ = new System.Net.Http.ByteArrayContent(json_);
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
@@ -1776,9 +1383,9 @@ namespace MyTests.test_nswag.generated
         /// <param name="username">The name that needs to be fetched. Use user1 for testing.</param>
         /// <returns>successful operation</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<User> GetUserByNameAsync(string username)
+        public virtual User GetUserByName(string username)
         {
-            return GetUserByNameAsync(username, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetUserByNameAsync(username, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -1788,7 +1395,7 @@ namespace MyTests.test_nswag.generated
         /// <param name="username">The name that needs to be fetched. Use user1 for testing.</param>
         /// <returns>successful operation</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<User> GetUserByNameAsync(string username, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<User> GetUserByNameAsync(string username, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (username == null)
                 throw new System.ArgumentNullException("username");
@@ -1881,9 +1488,9 @@ namespace MyTests.test_nswag.generated
         /// <param name="username">name that need to be updated</param>
         /// <param name="body">Updated user object</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task UpdateUserAsync(string username, User body)
+        public virtual void UpdateUser(string username, User body)
         {
-            return UpdateUserAsync(username, body, System.Threading.CancellationToken.None);
+            System.Threading.Tasks.Task.Run(async () => await UpdateUserAsync(username, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -1896,7 +1503,7 @@ namespace MyTests.test_nswag.generated
         /// <param name="username">name that need to be updated</param>
         /// <param name="body">Updated user object</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task UpdateUserAsync(string username, User body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task UpdateUserAsync(string username, User body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (username == null)
                 throw new System.ArgumentNullException("username");
@@ -1910,8 +1517,8 @@ namespace MyTests.test_nswag.generated
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, JsonSerializerSettings);
-                    var content_ = new System.Net.Http.StringContent(json_);
+                    var json_ = System.Text.Json.JsonSerializer.SerializeToUtf8Bytes(body, JsonSerializerSettings);
+                    var content_ = new System.Net.Http.ByteArrayContent(json_);
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("PUT");
@@ -1991,9 +1598,9 @@ namespace MyTests.test_nswag.generated
         /// </remarks>
         /// <param name="username">The name that needs to be deleted</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task DeleteUserAsync(string username)
+        public virtual void DeleteUser(string username)
         {
-            return DeleteUserAsync(username, System.Threading.CancellationToken.None);
+            System.Threading.Tasks.Task.Run(async () => await DeleteUserAsync(username, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -2005,7 +1612,7 @@ namespace MyTests.test_nswag.generated
         /// </remarks>
         /// <param name="username">The name that needs to be deleted</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task DeleteUserAsync(string username, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task DeleteUserAsync(string username, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (username == null)
                 throw new System.ArgumentNullException("username");
@@ -2092,9 +1699,9 @@ namespace MyTests.test_nswag.generated
         /// <param name="password">The password for login in clear text</param>
         /// <returns>successful operation</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<string> LoginUserAsync(string username, string password)
+        public virtual string LoginUser(string username, string password)
         {
-            return LoginUserAsync(username, password, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await LoginUserAsync(username, password, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -2105,7 +1712,7 @@ namespace MyTests.test_nswag.generated
         /// <param name="password">The password for login in clear text</param>
         /// <returns>successful operation</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<string> LoginUserAsync(string username, string password, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<string> LoginUserAsync(string username, string password, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (username == null)
                 throw new System.ArgumentNullException("username");
@@ -2194,9 +1801,9 @@ namespace MyTests.test_nswag.generated
         /// </summary>
         /// <returns>successful operation</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task LogoutUserAsync()
+        public virtual void LogoutUser()
         {
-            return LogoutUserAsync(System.Threading.CancellationToken.None);
+            System.Threading.Tasks.Task.Run(async () => await LogoutUserAsync(System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -2205,7 +1812,7 @@ namespace MyTests.test_nswag.generated
         /// </summary>
         /// <returns>successful operation</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task LogoutUserAsync(System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task LogoutUserAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -2264,9 +1871,9 @@ namespace MyTests.test_nswag.generated
         /// <param name="body">List of user object</param>
         /// <returns>successful operation</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task CreateUsersWithArrayInputAsync(System.Collections.Generic.IEnumerable<User> body)
+        public virtual void CreateUsersWithArrayInput(System.Collections.Generic.IEnumerable<User> body)
         {
-            return CreateUsersWithArrayInputAsync(body, System.Threading.CancellationToken.None);
+            System.Threading.Tasks.Task.Run(async () => await CreateUsersWithArrayInputAsync(body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -2276,7 +1883,7 @@ namespace MyTests.test_nswag.generated
         /// <param name="body">List of user object</param>
         /// <returns>successful operation</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task CreateUsersWithArrayInputAsync(System.Collections.Generic.IEnumerable<User> body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task CreateUsersWithArrayInputAsync(System.Collections.Generic.IEnumerable<User> body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -2287,8 +1894,8 @@ namespace MyTests.test_nswag.generated
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, JsonSerializerSettings);
-                    var content_ = new System.Net.Http.StringContent(json_);
+                    var json_ = System.Text.Json.JsonSerializer.SerializeToUtf8Bytes(body, JsonSerializerSettings);
+                    var content_ = new System.Net.Http.ByteArrayContent(json_);
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
@@ -2345,9 +1952,9 @@ namespace MyTests.test_nswag.generated
         /// <param name="body">Created user object</param>
         /// <returns>successful operation</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task CreateUserAsync(User body)
+        public virtual void CreateUser(User body)
         {
-            return CreateUserAsync(body, System.Threading.CancellationToken.None);
+            System.Threading.Tasks.Task.Run(async () => await CreateUserAsync(body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -2360,7 +1967,7 @@ namespace MyTests.test_nswag.generated
         /// <param name="body">Created user object</param>
         /// <returns>successful operation</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task CreateUserAsync(User body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task CreateUserAsync(User body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -2371,8 +1978,8 @@ namespace MyTests.test_nswag.generated
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, JsonSerializerSettings);
-                    var content_ = new System.Net.Http.StringContent(json_);
+                    var json_ = System.Text.Json.JsonSerializer.SerializeToUtf8Bytes(body, JsonSerializerSettings);
+                    var content_ = new System.Net.Http.ByteArrayContent(json_);
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
@@ -2439,7 +2046,7 @@ namespace MyTests.test_nswag.generated
         {
             if (response == null || response.Content == null)
             {
-                return new ObjectResponseResult<T>(default(T), string.Empty);
+                return new ObjectResponseResult<T>(default(T)!, string.Empty);
             }
 
             if (ReadResponseAsString)
@@ -2447,10 +2054,10 @@ namespace MyTests.test_nswag.generated
                 var responseText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    var typedBody = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(responseText, JsonSerializerSettings);
-                    return new ObjectResponseResult<T>(typedBody, responseText);
+                    var typedBody = System.Text.Json.JsonSerializer.Deserialize<T>(responseText, JsonSerializerSettings);
+                    return new ObjectResponseResult<T>(typedBody!, responseText);
                 }
-                catch (Newtonsoft.Json.JsonException exception)
+                catch (System.Text.Json.JsonException exception)
                 {
                     var message = "Could not deserialize the response body string as " + typeof(T).FullName + ".";
                     throw new ApiException(message, (int)response.StatusCode, responseText, headers, exception);
@@ -2461,15 +2068,12 @@ namespace MyTests.test_nswag.generated
                 try
                 {
                     using (var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
-                    using (var streamReader = new System.IO.StreamReader(responseStream))
-                    using (var jsonTextReader = new Newtonsoft.Json.JsonTextReader(streamReader))
                     {
-                        var serializer = Newtonsoft.Json.JsonSerializer.Create(JsonSerializerSettings);
-                        var typedBody = serializer.Deserialize<T>(jsonTextReader);
-                        return new ObjectResponseResult<T>(typedBody, string.Empty);
+                        var typedBody = await System.Text.Json.JsonSerializer.DeserializeAsync<T>(responseStream, JsonSerializerSettings, cancellationToken).ConfigureAwait(false);
+                        return new ObjectResponseResult<T>(typedBody!, string.Empty);
                     }
                 }
-                catch (Newtonsoft.Json.JsonException exception)
+                catch (System.Text.Json.JsonException exception)
                 {
                     var message = "Could not deserialize the response body stream as " + typeof(T).FullName + ".";
                     throw new ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
@@ -2477,7 +2081,7 @@ namespace MyTests.test_nswag.generated
             }
         }
 
-        private string ConvertToString(object value, System.Globalization.CultureInfo cultureInfo)
+        private string ConvertToString(object? value, System.Globalization.CultureInfo cultureInfo)
         {
             if (value == null)
             {
@@ -2535,124 +2139,133 @@ namespace MyTests.test_nswag.generated
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class ApiResponse
     {
-        [Newtonsoft.Json.JsonProperty("code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Code { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Type { get; set; }
+        [System.Text.Json.Serialization.JsonPropertyName("code")]
+        public int? Code { get; set; } = default!;
 
-        [Newtonsoft.Json.JsonProperty("message", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Message { get; set; }
+        [System.Text.Json.Serialization.JsonPropertyName("type")]
+        public string? Type { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("message")]
+        public string? Message { get; set; } = default!;
 
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class Category
     {
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? Id { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        [System.Text.Json.Serialization.JsonPropertyName("id")]
+        public long? Id { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; } = default!;
 
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class Pet
     {
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? Id { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("category", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public Category Category { get; set; }
+        [System.Text.Json.Serialization.JsonPropertyName("id")]
+        public long? Id { get; set; } = default!;
 
-        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Always)]
+        [System.Text.Json.Serialization.JsonPropertyName("category")]
+        public Category? Category { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("name")]
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
 
-        [Newtonsoft.Json.JsonProperty("photoUrls", Required = Newtonsoft.Json.Required.Always)]
+        [System.Text.Json.Serialization.JsonPropertyName("photoUrls")]
         [System.ComponentModel.DataAnnotations.Required]
         public System.Collections.Generic.ICollection<string> PhotoUrls { get; set; } = new System.Collections.ObjectModel.Collection<string>();
 
-        [Newtonsoft.Json.JsonProperty("tags", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<Tag> Tags { get; set; }
+        [System.Text.Json.Serialization.JsonPropertyName("tags")]
+        public System.Collections.Generic.ICollection<Tag>? Tags { get; set; } = default!;
 
         /// <summary>
         /// pet status in the store
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("status", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public PetStatus? Status { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("status")]
+        [System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter))]
+        public PetStatus? Status { get; set; } = default!;
 
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class Tag
     {
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? Id { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        [System.Text.Json.Serialization.JsonPropertyName("id")]
+        public long? Id { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; } = default!;
 
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class Order
     {
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? Id { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("petId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? PetId { get; set; }
+        [System.Text.Json.Serialization.JsonPropertyName("id")]
+        public long? Id { get; set; } = default!;
 
-        [Newtonsoft.Json.JsonProperty("quantity", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Quantity { get; set; }
+        [System.Text.Json.Serialization.JsonPropertyName("petId")]
+        public long? PetId { get; set; } = default!;
 
-        [Newtonsoft.Json.JsonProperty("shipDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.DateTimeOffset? ShipDate { get; set; }
+        [System.Text.Json.Serialization.JsonPropertyName("quantity")]
+        public int? Quantity { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("shipDate")]
+        public System.DateTimeOffset? ShipDate { get; set; } = default!;
 
         /// <summary>
         /// Order Status
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("status", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public OrderStatus? Status { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("complete", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? Complete { get; set; }
+        [System.Text.Json.Serialization.JsonPropertyName("status")]
+        [System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter))]
+        public OrderStatus? Status { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("complete")]
+        public bool? Complete { get; set; } = default!;
 
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class User
     {
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? Id { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("username", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Username { get; set; }
+        [System.Text.Json.Serialization.JsonPropertyName("id")]
+        public long? Id { get; set; } = default!;
 
-        [Newtonsoft.Json.JsonProperty("firstName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string FirstName { get; set; }
+        [System.Text.Json.Serialization.JsonPropertyName("username")]
+        public string? Username { get; set; } = default!;
 
-        [Newtonsoft.Json.JsonProperty("lastName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string LastName { get; set; }
+        [System.Text.Json.Serialization.JsonPropertyName("firstName")]
+        public string? FirstName { get; set; } = default!;
 
-        [Newtonsoft.Json.JsonProperty("email", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Email { get; set; }
+        [System.Text.Json.Serialization.JsonPropertyName("lastName")]
+        public string? LastName { get; set; } = default!;
 
-        [Newtonsoft.Json.JsonProperty("password", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Password { get; set; }
+        [System.Text.Json.Serialization.JsonPropertyName("email")]
+        public string? Email { get; set; } = default!;
 
-        [Newtonsoft.Json.JsonProperty("phone", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Phone { get; set; }
+        [System.Text.Json.Serialization.JsonPropertyName("password")]
+        public string? Password { get; set; } = default!;
+
+        [System.Text.Json.Serialization.JsonPropertyName("phone")]
+        public string? Phone { get; set; } = default!;
 
         /// <summary>
         /// User Status
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("userStatus", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? UserStatus { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("userStatus")]
+        public int? UserStatus { get; set; } = default!;
 
     }
 
@@ -2709,12 +2322,12 @@ namespace MyTests.test_nswag.generated
         {
         }
 
-        public FileParameter(System.IO.Stream data, string fileName)
+        public FileParameter(System.IO.Stream data, string? fileName)
             : this (data, fileName, null)
         {
         }
 
-        public FileParameter(System.IO.Stream data, string fileName, string contentType)
+        public FileParameter(System.IO.Stream data, string? fileName, string? contentType)
         {
             Data = data;
             FileName = fileName;
@@ -2723,9 +2336,9 @@ namespace MyTests.test_nswag.generated
 
         public System.IO.Stream Data { get; private set; }
 
-        public string FileName { get; private set; }
+        public string? FileName { get; private set; }
 
-        public string ContentType { get; private set; }
+        public string? ContentType { get; private set; }
     }
 
 
@@ -2735,11 +2348,11 @@ namespace MyTests.test_nswag.generated
     {
         public int StatusCode { get; private set; }
 
-        public string Response { get; private set; }
+        public string? Response { get; private set; }
 
         public System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> Headers { get; private set; }
 
-        public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.Exception innerException)
+        public ApiException(string message, int statusCode, string? response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.Exception? innerException)
             : base(message + "\n\nStatus: " + statusCode + "\nResponse: \n" + ((response == null) ? "(null)" : response.Substring(0, response.Length >= 512 ? 512 : response.Length)), innerException)
         {
             StatusCode = statusCode;
@@ -2758,7 +2371,7 @@ namespace MyTests.test_nswag.generated
     {
         public TResult Result { get; private set; }
 
-        public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, TResult result, System.Exception innerException)
+        public ApiException(string message, int statusCode, string? response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, TResult result, System.Exception? innerException)
             : base(message, statusCode, response, headers, innerException)
         {
             Result = result;
