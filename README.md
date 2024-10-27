@@ -169,5 +169,32 @@ and you see the launches here: <http://localhost:8080/ui/?#superadmin_personal/l
 
 # How to use NSwag to generate C# clients from OpenAPI specs ########################################################
 
-Install the package:
+1) Install the package:
 `dotnet add package NSwag.MSBuild`
+
+2) Install NSwag as a global tool:
+`dotnet tool install -g NSwag.ConsoleCore`
+
+3) Create the nswag.json file:
+
+```json
+{
+  "runtime": "Net80",
+  "swaggerGenerator": {
+    "fromSwagger": {
+      "url": "https://petstore.swagger.io/v2/swagger.json"
+    }
+  },
+  "codeGenerators": {
+    "openApiToCSharpClient": {
+      "className": "PetstoreClient",
+      "namespace": "MyTests.test_nswag.generated",
+      "generateClientInterfaces": true,
+      "output": "test_nswag/generated/PetstoreClient.cs"
+    }
+  }
+}
+```
+
+4) Generate the client:
+`nswag run nswag.json`
