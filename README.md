@@ -169,32 +169,125 @@ and you see the launches here: <http://localhost:8080/ui/?#superadmin_personal/l
 
 # How to use NSwag to generate C# clients from OpenAPI specs ########################################################
 
-1) Install the package:
-`dotnet add package NSwag.MSBuild`
+0) REMOVE the package from inside the project if it exists:
+`dotnet remove package NSwag.MSBuild`
 
-2) Install NSwag as a global tool:
+1) Install NSwag as a global tool:
 `dotnet tool install -g NSwag.ConsoleCore`
 
-3) Create the nswag.json file:
+2) Create the nswag.json file:
 
 ```json
 {
   "runtime": "Net80",
-  "swaggerGenerator": {
-    "fromSwagger": {
-      "url": "https://petstore.swagger.io/v2/swagger.json"
+  "defaultVariables": null,
+  "documentGenerator": {
+    "fromDocument": {
+      "url": "https://petstore.swagger.io/v2/swagger.json",
+      "output": null,
+      "newLineBehavior": "Auto"
     }
   },
   "codeGenerators": {
     "openApiToCSharpClient": {
+      "clientBaseClass": null,
+      "configurationClass": null,
+      "generateClientClasses": true,
+      "suppressClientClassesOutput": false,
+      "generateClientInterfaces": false,
+      "suppressClientInterfacesOutput": false,
+      "clientBaseInterface": null,
+      "injectHttpClient": true,
+      "disposeHttpClient": false,
+      "protectedMethods": [],
+      "generateExceptionClasses": true,
+      "exceptionClass": "ApiException",
+      "wrapDtoExceptions": false,
+      "useHttpClientCreationMethod": true,
+      "httpClientType": "System.Net.Http.HttpClient",
+      "useHttpRequestMessageCreationMethod": false,
+      "useBaseUrl": true,
+      "generateBaseUrlProperty": true,
+      "generateSyncMethods": true,
+      "generatePrepareRequestAndProcessResponseAsAsyncMethods": false,
+      "exposeJsonSerializerSettings": false,
+      "clientClassAccessModifier": "public",
+      "typeAccessModifier": "public",
+      "propertySetterAccessModifier": "",
+      "generateNativeRecords": false,
+      "generateContractsOutput": false,
+      "contractsNamespace": null,
+      "contractsOutputFilePath": null,
+      "parameterDateTimeFormat": "s",
+      "parameterDateFormat": "yyyy-MM-dd",
+      "generateUpdateJsonSerializerSettingsMethod": true,
+      "useRequestAndResponseSerializationSettings": false,
+      "serializeTypeInformation": false,
+      "queryNullValue": "",
       "className": "PetstoreClient",
-      "namespace": "MyTests.test_nswag.generated",
-      "generateClientInterfaces": true,
-      "output": "test_nswag/generated/PetstoreClient.cs"
+      "operationGenerationMode": "SingleClientFromOperationId",
+      "additionalNamespaceUsages": [],
+      "additionalContractNamespaceUsages": [],
+      "generateOptionalParameters": true,
+      "generateJsonMethods": false,
+      "enforceFlagEnums": false,
+      "parameterArrayType": "System.Collections.Generic.IEnumerable",
+      "parameterDictionaryType": "System.Collections.Generic.IDictionary",
+      "responseArrayType": "System.Collections.Generic.ICollection",
+      "responseDictionaryType": "System.Collections.Generic.IDictionary",
+      "wrapResponses": false,
+      "wrapResponseMethods": [],
+      "generateResponseClasses": true,
+      "responseClass": "SwaggerResponse",
+      "namespace": "MyTests.TestNSwag",
+      "requiredPropertiesMustBeDefined": true,
+      "dateType": "System.DateTimeOffset",
+      "jsonConverters": null,
+      "anyType": "object",
+      "dateTimeType": "System.DateTimeOffset",
+      "timeType": "System.TimeSpan",
+      "timeSpanType": "System.TimeSpan",
+      "arrayType": "System.Collections.Generic.ICollection",
+      "arrayInstanceType": "System.Collections.ObjectModel.Collection",
+      "dictionaryType": "System.Collections.Generic.IDictionary",
+      "dictionaryInstanceType": "System.Collections.Generic.Dictionary",
+      "arrayBaseType": "System.Collections.ObjectModel.Collection",
+      "dictionaryBaseType": "System.Collections.Generic.Dictionary",
+      "classStyle": "Poco",
+      "jsonLibrary": "SystemTextJson",
+      "generateDefaultValues": true,
+      "generateDataAnnotations": true,
+      "excludedTypeNames": [],
+      "excludedParameterNames": [],
+      "handleReferences": false,
+      "generateImmutableArrayProperties": false,
+      "generateImmutableDictionaryProperties": false,
+      "jsonSerializerSettingsTransformationMethod": null,
+      "inlineNamedArrays": false,
+      "inlineNamedDictionaries": false,
+      "inlineNamedTuples": true,
+      "inlineNamedAny": false,
+      "generateDtoTypes": true,
+      "generateOptionalPropertiesAsNullable": true,
+      "generateNullableReferenceTypes": true,
+      "templateDirectory": null,
+      "serviceHost": null,
+      "serviceSchemes": null,
+      "output": "TestNSwag/generated/PetstoreClient.cs",
+      "newLineBehavior": "Auto"
     }
   }
 }
 ```
 
-4) Generate the client:
+3) Generate the client:
 `nswag run nswag.json`
+
+4) Use the generated client in your tests like so:
+
+```csharp
+        var httpClient = new HttpClient { BaseAddress = new Uri("https://petstore.swagger.io/v2") };
+        var client = new PetstoreClient(httpClient);
+        var pets = await _client.FindPetsByStatusAsync([Anonymous.Available]);
+        Assert.IsTrue(pets.Count > 0);
+```
