@@ -1,5 +1,4 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
 namespace MyTests.TestNSwag;
 
 //dotnet test --logger "console;verbosity=detailed" --filter FullyQualifiedName~NSwagTests
@@ -25,5 +24,8 @@ public class NSwagTests
 
         Assert.IsNotNull(pets, "Expected pets list to be not null");
         Assert.IsTrue(pets.Count > 0, "Expected at least one pet with 'available' status");
+
+        var clientV2 = new PetstoreClientV2(new HttpClient());
+        var petsV2 = await clientV2.FindPetsByStatusAsync(["hello"]);
     }
 }
