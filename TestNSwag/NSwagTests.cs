@@ -16,14 +16,15 @@ public class NSwagTests
     }
 
     [TestMethod]
+    [TestCategory("NSwag")]
     public async Task GetPetsByStatus_ShouldReturnResults()
     {
         Assert.IsNotNull(_client, "Client is not initialized");
         var statusParameter = Anonymous.Available;
         var pets = await _client.FindPetsByStatusAsync([statusParameter]);
 
-        Assert.IsNotNull(pets, "Expected pets list to be not null");
-        Assert.IsTrue(pets.Count > 0, "Expected at least one pet with 'available' status");
+        Assert.IsNotNull(pets.Result, "Expected pets list to be not null");
+        Assert.IsTrue(pets.Result.Count > 0, "Expected at least one pet with 'available' status");
 
         var clientV2 = new PetstoreClientV2(new HttpClient());
         var petsV2 = await clientV2.FindPetsByStatusAsync(["hello"]);
